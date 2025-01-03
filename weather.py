@@ -19,7 +19,13 @@ if __name__ == "__main__":
 
     city = input("\nEnter a City Name: ")
 
+    if not bool(city.strip()):
+        city = "Toronto"
+
     weather_data = get_current_weather(city)
+    # City is not found by API
+    if not weather_data['cod'] == 200:
+        print("City not Found \"404\"")
 
     print("\n")
     pprint(weather_data)
